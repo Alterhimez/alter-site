@@ -1,0 +1,23 @@
+.container-top {
+    background: #6f2cec;
+    padding: 50px;
+    margin-bottom: 0px;
+    text-align: center;
+    color:white;
+
+
+    
+}
+
+.container-row {
+    display: flex;
+    gap: 0px;
+}
+
+.container-left,
+.container-right {
+    flex: 1;
+    background: #f5f5f5;
+    padding: 0px;
+    text-align: center;
+}
