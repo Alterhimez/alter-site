@@ -56,12 +56,12 @@ footer{
     align-items: center;
     font: 12px 'comic sans ms';
     background-image: url(/img/1checkerboard.jpg);
-    color: yellow;
+    color: rgb(255, 255, 255);
 }
 
 .footer-btn {
     display: inline-block;
-    background: #22c55e;
+    background: blue;
     color: white;
     text-decoration: none;
     padding: 14px 28px;
@@ -79,7 +79,7 @@ footer{
 .footer-btn:hover  {
     transform: scale(0.96);
     box-shadow: 0 1px 4px rgba(2, 255, 94, 0.25);
-    background: #16a34a;
+    background: #1374c4;
 }
 
 .footer-btn:active{
