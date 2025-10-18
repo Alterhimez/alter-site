@@ -30,6 +30,7 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
 .container-top {
     background: #6f2cec;
     padding: 50px;
@@ -39,6 +40,35 @@ body{
     border-radius: 30px; /* Rounded rectangle */
     box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     position: relative;
+}
+
+/* no i czego tu szukales spellu */
+
+.buttonpp {
+    display: inline-block;
+    background: black;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin: 8px 8px 0 0;
+    border-radius: 16px;
+    font-size: 1.1em;
+    font-family: inherit;
+    font-weight: bold;
+    box-shadow: 0 2px 4px #1c0141a9;
+    transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.buttonpp:hover  {
+    transform: scale(0.96);
+    box-shadow: 0 2px 8px #520f45a9;
+    background: #592bc4;
+}
+
+.buttonpp:active{
+    transform: scale(0.5);
 }
 
 .container-row {
@@ -58,7 +88,7 @@ footer{
     color: rgb(255, 255, 255);
 }
 
-.footer-btn {
+.button1 {
     display: inline-block;
     background: blue;
     color: white;
@@ -75,13 +105,13 @@ footer{
     cursor: pointer;
 }
 
-.footer-btn:hover  {
+.button1:hover  {
     transform: scale(0.96);
     box-shadow: 0 1px 4px rgba(2, 255, 94, 0.25);
     background: #1374c4;
 }
 
-.footer-btn:active{
+.button1:active{
     transform: scale(0.8);
 }
 .tvoy-stary {
