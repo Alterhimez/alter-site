@@ -48,7 +48,9 @@ body{
     flex: 1;
     padding: 0px;
 }
-
+.container-center {
+    text-align: center;
+}
 .container-row2 {
     display: flex;
     gap: 0px;
