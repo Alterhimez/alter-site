@@ -11,35 +11,75 @@
     <div class="container-top">
         <h1><span class="typewriter">Alterhimez</span></h1>
         <p>Inf.02. enjoyer</p>
+    </div>
+    <div class="container-row">
+        <div class="container-left">
+            <iframe  width="750" height="450"
+            src="https://www.youtube.com/embed/KSPxHniCtmw?autoplay=1&loop=1&playlist=KSPxHniCtmw&mute=1"
+            title="techno żul" frameborder="0" allow="accelerometer; autoplay; loop; clipboard-write; encrypted-media;
+            gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+            <br><p class="tvoy-stary">tvoy stary pijany</p>
+        </div>
+        <div class="container-center">
+            <button class="button1">CLICK ME!</button>
+        </div>
+        <div class="container-right">
+            <h1>Currently under construction</h1>
+        </div>
+
+    </div>
+    <div class="container-row2">
+        <div class="x1stcont">
+            <h2>Section 1</h2>
+            <p>Content for section 1 goes here.</p>
+
+        </div>
+        <div class="x2ndcont">
         <div class="audio-player">
             <!-- Muted autoplay improves chance the browser will allow playback.
                  We'll unmute after the user's first interaction. -->
             <audio id="bg-audio" src="bg.mp3" preload="auto" loop autoplay muted playsinline></audio>
-            <button id="audio-toggle" class="buttonpp">Loading…</button>
+
+            <div class="audio-controls">
+                <button id="audio-toggle" class="buttonpp">Loading…</button>
+                <br> <br>
+                <!-- Volume slider -->
+                <label class="volume-control" for="volume-slider" aria-hidden="true">
+                    <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5">
+                </label>
+            </div>
 
             <script>
                 (function(){
                     const audio = document.getElementById('bg-audio');
                     const btn = document.getElementById('audio-toggle');
+                    const slider = document.getElementById('volume-slider');
+
+                    // restore saved volume or default to 0.5
+                    const saved = localStorage.getItem('bgAudioVolume');
+                    audio.volume = saved !== null ? Number(saved) : 0.5;
+                    slider.value = audio.volume;
 
                     function updateButton() {
-                        if (audio.paused) return btn.textContent = 'Play audio';
-                        return btn.textContent = audio.muted ? 'Playing (muted)' : 'Pause audio';
+                        if (audio.paused) {
+                            btn.textContent = 'Play audio';
+                        } else {
+                            btn.textContent = (audio.muted || audio.volume === 0) ? 'Playing (muted)' : 'Pause audio';
+                        }
                     }
 
-                    // Try to play immediately; if blocked, keep it muted (already muted attr)
+                    // Try to play immediately; if blocked, leave muted and try again
                     audio.play().then(updateButton).catch(() => {
-                        // ensure muted and try again; this maximizes chance autoplay succeeds
                         audio.muted = true;
                         audio.play().then(updateButton).catch(updateButton);
                     });
 
-                    // On first user gesture, unmute (if currently muted) so sound can be heard
+                    // On first user gesture, unmute if volume > 0
                     function onFirstGesture() {
-                        if (audio.muted) {
+                        if (audio.muted && Number(slider.value) > 0) {
                             audio.muted = false;
-                            // attempt to resume audible playback
-                            audio.play().catch(() => {});
+                            audio.play().catch(()=>{});
                         }
                         updateButton();
                         window.removeEventListener('click', onFirstGesture);
@@ -57,6 +97,21 @@
                         } else {
                             audio.pause();
                         }
+                        // ensure label updates after the action (play/pause is async)
+                        setTimeout(updateButton, 0);
+                    });
+
+                    // Volume slider -> audio volume and persist
+                    slider.addEventListener('input', (e) => {
+                        const v = Number(e.target.value);
+                        audio.volume = v;
+                        localStorage.setItem('bgAudioVolume', String(v));
+                        if (v === 0) {
+                            audio.muted = true;
+                        } else if (audio.muted) {
+                            // unmute if user raised volume
+                            audio.muted = false;
+                        }
                         updateButton();
                     });
 
@@ -65,22 +120,17 @@
                 })();
             </script>
         </div>
-    </div>
-    <div class="container-row">
-        <div class="container-left">
-            <iframe  width="750" height="450"
-            src="https://www.youtube.com/embed/KSPxHniCtmw?autoplay=1&loop=1&playlist=KSPxHniCtmw&mute=1"
-            title="techno żul" frameborder="0" allow="accelerometer; autoplay; loop; clipboard-write; encrypted-media;
-            gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>
-            <br><p class="tvoy-stary">tvoy stary pijany</p>
         </div>
-        <div class="container-center">
-            <button class="button1">CLICK ME!</button>
+        <div class="x3rdcont">
+            <h2>Section 3</h2>
+            <p>Content for section 3 goes here.</p>
+
         </div>
-        <div class="container-right">
-            <h1>Currently under construction</h1>
-        </div>
+
+
+
+
+
 
     </div>
 

@@ -39,7 +39,37 @@ body{
     position: relative;
 }
 
-/* no i czego tu szukales spellu */
+.container-row {
+    display: flex;
+    gap: 0px;
+}
+
+.container-left, .container-right, .container-center {
+    flex: 1;
+    padding: 0px;
+}
+
+.container-row2 {
+    display: flex;
+    gap: 0px;
+}
+
+.x1stcont, .x2ndcont, .x3rdcont {
+    background: #6f2cec;
+    padding: 3px;
+    margin: 5px;
+    text-align: center;
+    color: white;
+    border-radius: 20px; /* Rounded rectangle */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    flex: 1;
+}
+
+/* 
+
+    POCZĄTEK AUDIO PLAYERA
+
+*/
 
 .buttonpp {
     display: inline-block;
@@ -68,15 +98,61 @@ body{
     transform: scale(0.5);
 }
 
-.container-row {
-    display: flex;
-    gap: 0px;
+.audio-controls {
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    justify-content: center;
 }
 
-.container-left, .container-right, .container-center {
-    flex: 1;
-    padding: 0px;
+/* Volume slider styling */
+.volume-control input[type="range"] {
+    width: 140px;
+    appearance: none;      
+    -moz-appearance: none; 
+    background: transparent;
 }
+
+/* Webkit track */
+.volume-control input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    background: #5d1586;
+    border-radius: 999px;
+}
+
+/* Webkit thumb */
+.volume-control input[type="range"]::-webkit-slider-thumb {
+    appearance: none;      /* replaced -webkit-appearance */
+    -moz-appearance: none; /* Firefox */
+    width: 16px;
+    height: 16px;
+    background: #4d1fb9; /* purple thumb */
+    border-radius: 4px; /* slightly square rounded */
+    margin-top: -5px;
+    box-shadow: 0 2px 6px rgba(77,31,185,0.35);
+    cursor: pointer;
+}
+
+/* Firefox track/thumb */
+.volume-control input[type="range"]::-moz-range-track {
+    height: 6px;
+    background: #5d1586;
+    border-radius: 999px;
+}
+.volume-control input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #4d1fb9;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(77,31,185,0.35);
+    cursor: pointer;
+}
+
+/* 
+
+    KONIEC AUDIO PLAYERA
+
+*/
 
 footer{
     text-align: center;
