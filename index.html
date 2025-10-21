@@ -1,13 +1,15 @@
-<html>
+<html lang="pl-PL">
 <head>
     <link rel="stylesheet" href="stylowy_orzel.css">
     <meta charset="UTF-8">
+    <meta name="language" content="pl-PL">
+    <meta http-equiv="Content-Language" content="pl-PL">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Alter Site</title>
     <link rel="shortcut icon" href="Saulgoodman.png" type="image/x-icon">
 </head>
 <body>
-    
+    <!-- dla szperaczy: bit.ly/alterpoleca -->
     <div class="container-top">
         <h1><span class="typewriter">Alterhimez</span></h1>
         <p>Inf.02. enjoyer</p>
@@ -63,9 +65,9 @@
 
                     function updateButton() {
                         if (audio.paused) {
-                            btn.textContent = 'Play audio';
+                            btn.textContent = 'Odtwórz muzykę';
                         } else {
-                            btn.textContent = (audio.muted || audio.volume === 0) ? 'Playing (muted)' : 'Pause audio';
+                            btn.textContent = (audio.muted || audio.volume === 0) ? 'Odtwarzanie (wyciszone)' : 'Zatrzymaj muzykę';
                         }
                     }
 
