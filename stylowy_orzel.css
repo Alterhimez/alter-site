@@ -48,6 +48,11 @@ body{
     flex: 1;
     padding: 0px;
 }
+
+.container-right{
+    text-align: center;
+}
+
 .container-center {
     text-align: center;
 }

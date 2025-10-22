@@ -27,7 +27,8 @@
             <button class="button1">CLICK ME!</button>
         </div>
         <div class="container-right">
-            <h1>Currently under construction</h1>
+            <button class="button1" id="miernik-essa-btn">Miernik dzisiejszej essy</button>
+            <script src="miernik_essy.js"></script>
         </div>
 
     </div>
@@ -39,88 +40,16 @@
         </div>
         <div class="x2ndcont">
         <div class="audio-player">
-            <!-- Muted autoplay improves chance the browser will allow playback.
-                 We'll unmute after the user's first interaction. -->
             <audio id="bg-audio" src="bg.mp3" preload="auto" loop autoplay muted playsinline></audio>
-
             <div class="audio-controls">
                 <button id="audio-toggle" class="buttonpp">Loading…</button>
-                <br> <br>
-                <!-- Volume slider -->
+                <br><br>
                 <label class="volume-control" for="volume-slider" aria-hidden="true">
                     <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5">
                 </label>
             </div>
 
-            <script>
-                (function(){
-                    const audio = document.getElementById('bg-audio');
-                    const btn = document.getElementById('audio-toggle');
-                    const slider = document.getElementById('volume-slider');
-
-                    // restore saved volume or default to 0.5
-                    const saved = localStorage.getItem('bgAudioVolume');
-                    audio.volume = saved !== null ? Number(saved) : 0.5;
-                    slider.value = audio.volume;
-
-                    function updateButton() {
-                        if (audio.paused) {
-                            btn.textContent = 'Odtwórz muzykę';
-                        } else {
-                            btn.textContent = (audio.muted || audio.volume === 0) ? 'Odtwarzanie (wyciszone)' : 'Zatrzymaj muzykę';
-                        }
-                    }
-
-                    // Try to play immediately; if blocked, leave muted and try again
-                    audio.play().then(updateButton).catch(() => {
-                        audio.muted = true;
-                        audio.play().then(updateButton).catch(updateButton);
-                    });
-
-                    // On first user gesture, unmute if volume > 0
-                    function onFirstGesture() {
-                        if (audio.muted && Number(slider.value) > 0) {
-                            audio.muted = false;
-                            audio.play().catch(()=>{});
-                        }
-                        updateButton();
-                        window.removeEventListener('click', onFirstGesture);
-                        window.removeEventListener('keydown', onFirstGesture);
-                        window.removeEventListener('touchstart', onFirstGesture);
-                    }
-                    window.addEventListener('click', onFirstGesture, { once: true });
-                    window.addEventListener('keydown', onFirstGesture, { once: true });
-                    window.addEventListener('touchstart', onFirstGesture, { once: true });
-
-                    // Toggle play/pause via button
-                    btn.addEventListener('click', () => {
-                        if (audio.paused) {
-                            audio.play().catch(() => {});
-                        } else {
-                            audio.pause();
-                        }
-                        // ensure label updates after the action (play/pause is async)
-                        setTimeout(updateButton, 0);
-                    });
-
-                    // Volume slider -> audio volume and persist
-                    slider.addEventListener('input', (e) => {
-                        const v = Number(e.target.value);
-                        audio.volume = v;
-                        localStorage.setItem('bgAudioVolume', String(v));
-                        if (v === 0) {
-                            audio.muted = true;
-                        } else if (audio.muted) {
-                            // unmute if user raised volume
-                            audio.muted = false;
-                        }
-                        updateButton();
-                    });
-
-                    // init button label
-                    updateButton();
-                })();
-            </script>
+            <script src="auto-music.js"></script>
         </div>
         </div>
         <div class="x3rdcont">
@@ -141,6 +70,7 @@
     <a class="button1" href="https://github.com/alterhimez">GitHub</a>
     <a class="button1" href="https://guns.lol/alterhimez">Linki do sociali (guns.lol)</a>
     <a class="button1" href="mailto:alterhimez07@gmail.com">alterhimez07@gmail.com</a>
+    <a class="button1" href="https://s.team/p/grqd-cjrb">Profil Steam</a>
     <br>
     </footer>
 </body>
