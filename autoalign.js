@@ -1,27 +1,44 @@
-// Automatically size iframes to the width of .container-left and adjust height when possible.
-// - For same-origin iframes it sets height to content height.
-// - For cross-origin iframes it preserves an aspect ratio (data-aspect or 16:9 fallback).
+// Auto-align iframes to the actual width of the left column containers.
+// Supports multiple possible container class names used in your HTML.
+// - Uses ResizeObserver when available.
+// - For same-origin iframes tries to read content height, otherwise uses data-aspect or 16:9 fallback.
 
 (function () {
-    const containerSelector = '.container-left';
+    const CONTAINER_SELECTORS = [
+        '.x1stcont2',   // your left column in index.html
+        '.container-left',
+        '.x1stcont'
+    ].join(','); // will pick any that exist
+
     const ASPECT_FALLBACK = 16 / 9;
 
-    function getLeftContainer() {
-        return document.querySelector(containerSelector);
+    function getContainers() {
+        return Array.from(document.querySelectorAll(CONTAINER_SELECTORS));
     }
 
-    function fitIframeToContainer(iframe, containerWidth) {
-        if (!iframe || !containerWidth) return;
+    function parseAspect(aspectAttr) {
+        if (!aspectAttr) return ASPECT_FALLBACK;
+        const n = parseFloat(aspectAttr);
+        if (!Number.isNaN(n) && isFinite(n) && n > 0) return n;
+        if (aspectAttr.includes('/')) {
+            const [a, b] = aspectAttr.split('/').map(Number);
+            if (!Number.isNaN(a) && !Number.isNaN(b) && b !== 0) return a / b;
+        }
+        return ASPECT_FALLBACK;
+    }
 
-        // set width to match container (use style so CSS still applies)
-        iframe.style.width = containerWidth + 'px';
+    function fitIframeToContainer(iframe, container) {
+        if (!iframe || !container) return;
+        // make iframe fill container width (responsive)
+        iframe.style.width = '100%';
+        iframe.style.maxWidth = '100%';
         iframe.removeAttribute('width');
 
-        // try to set height from iframe content (may throw for cross-origin)
+        const containerWidth = container.clientWidth;
+        // try same-origin height measurement
         try {
             const doc = iframe.contentWindow && iframe.contentWindow.document;
             if (doc) {
-                // prefer body.scrollHeight but also consider documentElement
                 const h = Math.max(
                     doc.body ? doc.body.scrollHeight : 0,
                     doc.documentElement ? doc.documentElement.scrollHeight : 0
@@ -33,96 +50,73 @@
                 }
             }
         } catch (err) {
-            // cross-origin or access denied
+            // cross-origin: fallback to aspect ratio
         }
 
-        // fallback: use aspect ratio stored on iframe (data-aspect="width/height" or numeric)
-        const aspectAttr = iframe.getAttribute('data-aspect');
-        let aspect = ASPECT_FALLBACK;
-        if (aspectAttr) {
-            const n = parseFloat(aspectAttr);
-            if (!Number.isNaN(n) && isFinite(n) && n > 0) {
-                // if numeric, treat as width/height (e.g. 1.777)
-                aspect = n;
-            } else if (aspectAttr.includes('/')) {
-                const parts = aspectAttr.split('/');
-                const a = parseFloat(parts[0]), b = parseFloat(parts[1]);
-                if (!Number.isNaN(a) && !Number.isNaN(b) && b !== 0) aspect = a / b;
-            }
-        }
-
+        const aspect = parseAspect(iframe.getAttribute('data-aspect'));
         iframe.style.height = Math.round(containerWidth / aspect) + 'px';
     }
 
-    function updateAll() {
-        const left = getLeftContainer();
-        if (!left) return;
-
-        const cw = left.clientWidth;
-        const iframes = left.querySelectorAll('iframe');
-        iframes.forEach((f) => fitIframeToContainer(f, cw));
+    function updateContainer(container) {
+        const iframes = container.querySelectorAll('iframe');
+        iframes.forEach((f) => fitIframeToContainer(f, container));
     }
 
-    // Re-fit a single iframe after it loads (useful for same-origin content)
-    function attachIframeLoadHandler(iframe) {
-        if (!iframe) return;
-        iframe.addEventListener('load', () => {
-            const left = getLeftContainer();
-            if (!left) return;
-            fitIframeToContainer(iframe, left.clientWidth);
-        }, { passive: true });
+    function attachIframeHandlers(container) {
+        // update when iframe loads (useful for same-origin)
+        container.querySelectorAll('iframe').forEach((iframe) => {
+            iframe.addEventListener('load', () => fitIframeToContainer(iframe, container), { passive: true });
+        });
     }
 
-    function observe() {
-        const left = getLeftContainer();
-        if (!left) return;
+    function observeContainer(container) {
+        updateContainer(container);
+        attachIframeHandlers(container);
 
-        // initial sizing
-        updateAll();
-
-        // ResizeObserver to respond to container size changes
         if (window.ResizeObserver) {
-            const ro = new ResizeObserver(updateAll);
-            ro.observe(left);
-            // also observe window resize as a fallback
-            window.addEventListener('resize', updateAll, { passive: true });
+            const ro = new ResizeObserver(() => updateContainer(container));
+            ro.observe(container);
+            // keep reference on element so GC won't drop it if needed later
+            container.__autoalign_ro = ro;
         } else {
-            window.addEventListener('resize', updateAll, { passive: true });
+            window.addEventListener('resize', () => updateContainer(container), { passive: true });
         }
 
-        // Watch for new iframes added to container
         if (window.MutationObserver) {
             const mo = new MutationObserver((mutations) => {
-                let changed = false;
+                let needsUpdate = false;
                 for (const m of mutations) {
                     if (m.addedNodes && m.addedNodes.length) {
                         m.addedNodes.forEach((n) => {
                             if (n.tagName === 'IFRAME') {
-                                attachIframeLoadHandler(n);
-                                changed = true;
+                                n.addEventListener('load', () => fitIframeToContainer(n, container), { passive: true });
+                                needsUpdate = true;
                             } else if (n.querySelectorAll) {
-                                const addedIframes = n.querySelectorAll('iframe');
-                                addedIframes.forEach((f) => {
-                                    attachIframeLoadHandler(f);
-                                    changed = true;
-                                });
+                                const added = n.querySelectorAll('iframe');
+                                if (added.length) {
+                                    added.forEach((a) => a.addEventListener('load', () => fitIframeToContainer(a, container), { passive: true }));
+                                    needsUpdate = true;
+                                }
                             }
                         });
                     }
                 }
-                if (changed) updateAll();
+                if (needsUpdate) updateContainer(container);
             });
-            mo.observe(left, { childList: true, subtree: true });
+            mo.observe(container, { childList: true, subtree: true });
+            container.__autoalign_mo = mo;
         }
-
-        // attach load handlers to existing iframes
-        left.querySelectorAll('iframe').forEach(attachIframeLoadHandler);
     }
 
-    // run when DOM is ready
+    function init() {
+        const containers = getContainers();
+        if (!containers.length) return;
+        containers.forEach(observeContainer);
+    }
+
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', observe);
+        document.addEventListener('DOMContentLoaded', init);
     } else {
-        observe();
+        init();
     }
 })();

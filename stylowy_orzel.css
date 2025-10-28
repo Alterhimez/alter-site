@@ -35,7 +35,7 @@ body{
 
 
 .container-top {
-    background: #6f2cec;
+    background: #fc3030;
     padding: 50px;
     margin-bottom: 0px;
     text-align: center;
@@ -51,18 +51,19 @@ body{
     gap: 0px;
 }
 
-.container-left, .container-right, .container-center {
+.x1stcont2, .x2ndcont2, .x3rdcont2 {
+    background: #6d0052;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    color: white;
+    border-radius: 20px; /* Rounded rectangle */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     flex: 1;
-    padding: 0px;
 }
 
-.container-right{
-    text-align: center;
-}
 
-.container-center {
-    text-align: center;
-}
+
 .container-row2 {
     display: flex;
     gap: 0px;
@@ -243,4 +244,9 @@ footer{
 .orientation-actions .button1 {
     padding: 10px 18px;
     border-radius: 10px;
+}
+hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 15px 0;
 }
