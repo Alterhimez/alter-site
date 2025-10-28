@@ -33,6 +33,7 @@ body{
     padding: 50px;
     margin-bottom: 0px;
     text-align: center;
+    align-items: center;
     color: white;
     border-radius: 30px; /* Rounded rectangle */
     box-shadow: 0 4px 16px rgba(0,0,0,0.1);
@@ -200,4 +201,40 @@ footer{
     color: white;
     font-weight: bold;
     font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+#orientation-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;               /* toggled by script */
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.88);
+    z-index: 9999;
+    padding: 20px;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.orientation-message {
+    background: #0b0b0b;
+    color: #fff;
+    padding: 22px;
+    border-radius: 12px;
+    max-width: 640px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+.orientation-text {
+    margin: 0 0 14px;
+    font-size: 1.15rem;
+    line-height: 1.4;
+}
+
+/* reuse .button1 styling already in file; override small adjustments */
+.orientation-actions .button1 {
+    padding: 10px 18px;
+    border-radius: 10px;
 }
