@@ -290,3 +290,9 @@ hr {
     flex-wrap: wrap;
     justify-content: center;
 }
+.pfooter {
+    font: 15px 'arial serif';
+}
+.q35px{
+    font-size: 35px;
+}
