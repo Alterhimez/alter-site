@@ -2,19 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const WEBHOOK_URL = 'https://discord.com/api/webhooks/1433662355585105941/bddGvPPn1upOvMFDbblqo-1Am4YjajmzICc-Ndifi8eLWZsBXEx94Eo0LyQDyZv2lwGW';
 
     const messages = {
-        click_me: "jakiś idiota kliknął 'nic'",
-        github: 'Ktoś odwiedza GitHuba.',
-        mail: '<@!908458192667803669> spodziewaj się maila (alterhimez07@gmail.com)',
-        steam_profile: 'Ktoś przegląda profil Steam.',
-        steam_group: 'Ktoś dołącza do grupy Steam.',
-        x_com: 'Ktoś przegląda profil X.',
-        youtube: 'Ktoś przegląda profil YouTube.',
-        tiktok: 'Ktoś odwiedza TikToka.',
-        spotify: 'Ktoś przegląda profil Spotify.',
-        discord_server: 'Ktoś dołącza na serwer Alterowy',
-        discord_profile: 'Ktoś przegląda profil Discord.',
-        chess_com: 'Ktoś przegląda profil Chess.com.',
-        lichess: 'Ktoś przegląda profil Lichess.'
+        click_me: "someone clicked 'nothin''",
+        github: 'someone viewed the GitHub profile.',
+        mail: '<@!908458192667803669> expect an email (alterhimez07@gmail.com)',
+        steam_profile: 'someone viewed the Steam profile.',
+        steam_group: 'someone is joining the Steam group.',
+        x_com: 'someone viewed the X profile.',
+        youtube: 'someone viewed the YouTube profile.',
+        tiktok: 'someone viewed the TikTok profile.',
+        spotify: 'someone viewed the Spotify profile.',
+        discord_server: 'someone is joining Alterowy server.',
+        discord_profile: 'someone viewed the Discord profile.',
+        chess_com: 'someone viewed the Chess.com profile.',
+        lichess: 'someone viewed the Lichess profile.',
+        twitch: 'someone viewed the Twitch profile.',
     };
 
     const footerButtons = document.querySelectorAll('footer .buttonfooter');
