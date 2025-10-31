@@ -8,15 +8,25 @@
             const raw = (el.getAttribute('data-words') || el.textContent || 'Alterhimez').trim();
             const words = raw.split('|').map(s => s.trim()).filter(Boolean);
             if (words.length === 0) words.push('Alterhimez');
+            const longestWord = words.reduce((max, word) => word.length > max.length ? word : max, '');
 
             // clear original content and build structure
-            el.textContent = '';
+            el.textContent = '@';
             const txt = document.createElement('span');
             txt.className = 'tw-text';
             const cursor = document.createElement('span');
             cursor.className = 'tw-cursor';
             el.appendChild(txt);
             el.appendChild(cursor);
+
+            // lock height so container doesn't jump when word changes
+            txt.textContent = longestWord;
+            requestAnimationFrame(() => {
+                const height = el.getBoundingClientRect().height;
+                el.style.minHeight = `${height}px`;
+                txt.textContent = '';
+                setTimeout(tick, 1500);
+            });
 
             const typeSpeed = Number(el.getAttribute('data-type-speed')) || 150;
             const deleteSpeed = Number(el.getAttribute('data-delete-speed')) || 150;
@@ -50,8 +60,8 @@
                 }
             }
 
-            // start
-            setTimeout(tick, 1500);
+            // start (triggered after height lock above)
+            // setTimeout(tick, 1500); // ← usunięto, startujemy w requestAnimationFrame
         });
     });
 })();
