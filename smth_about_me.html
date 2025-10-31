@@ -1,12 +1,12 @@
 <html lang="pl-PL">
 <head>
-    <link rel="stylesheet" href="stylowy_orzel.css">
+    <link rel="stylesheet" href="9stylowy_orzel.css">
     <meta charset="UTF-8">
     <meta name="language" content="pl-PL">
     <meta http-equiv="Content-Language" content="pl-PL">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>O mnie</title>
-    <link rel="shortcut icon" href="Saulgoodman.png" type="image/x-icon">
+    <title>O mnie - @Alterhimez</title>
+    <link rel="shortcut icon" href="1Saulgoodman.png" type="image/x-icon">
 </head>
 <body>
     <!-- dla szperaczy: bit.ly/alterpoleca -->
@@ -18,7 +18,12 @@
     </div>
     <div class="container-row">
         <div class="x1stcont">
-            <a id="under-site" class="button1" href="index.html">Strona główna</a>
+            <a id="under-site" class="button1" href="index.html">Strona główna</a><br><br>
+            <iframe src="https://www.youtube.com/embed/videoseries?si=i3V7iPk-9lkF_1Ov&amp;&shuffle=1&list=PLVhcKyh1qwxIKqrw9qs5IE8K-u1RazwmG"
+            title="Jebać SzachowegoMitomana1996 Playlist" frameborder="0" allow="accelerometer; autoplay; loop; clipboard-write; 
+            encrypted-media; gyroscope; 
+            picture-in-picture; web-share" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" id="iFrame1" allowfullscreen>
+            </iframe>
         </div>
         <div class="x2ndcont">
             <h2>Coś_o_mnie:</h2>
@@ -40,14 +45,21 @@
             </p>
         </div>
         <div class="x3rdcont">
-            <div class="audio-player">
+            <div class="audio-player" aria-label="Audio player">
                 <audio id="bg-audio" src="bg.mp3" preload="auto" loop autoplay muted playsinline></audio>
                 <div class="audio-controls">
-                    <button id="audio-toggle" class="buttonpp">Loading…</button>
-                    <br><br>
-                    <label class="volume-control" for="volume-slider" aria-hidden="true">
-                    <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5">
-                </label>
+                    <div class="btn-row" role="group" aria-label="Playback controls">
+                        <button id="audio-prev" class="buttonpp" type="button">Prev</button>
+                        <button id="audio-toggle" class="buttonpp" type="button">Loading…</button>
+                        <button id="audio-next" class="buttonpp" type="button">Next</button>
+                    </div>
+                    <br>
+                    <div class="slider-row">
+                        <label class="volume-control" for="volume-slider" aria-hidden="false">
+                            <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="Volume">
+                        </label>
+                    </div>
+                    <div id="audio-current" class="audio-current" aria-live="polite"></div>
                 </div>
             </div>
         </div>
@@ -58,29 +70,29 @@
 
 
     <footer>
-    <p class="pfooter">Jebać SzachowegoMentora1996</p>
+    <p title="Jebać tego spella" class="pfooter">Jebać SzachowegoMentora1996</p>
         <div class="przyciski_stopki_container">
-            <a target="_blank" alt="github" class="buttonfooter" href="https://github.com/alterhimez">Github.com</a>
-            <a target="_blank" alt="mail" class="buttonfooter" href="mailto:alterhimez07@gmail.com">Mail: alterhimez07@gmail.com</a>
-            <a target="_blank" alt="steam" class="buttonfooter" href="https://s.team/p/grqd-cjrb">Profil Steam</a>
-            <a target="_blank" alt="steam_group" class="buttonfooter" href="https://steamcommunity.com/groups/tzvel-esports">Grupa Steam: cvel_esports</a>
-            <a target="_blank" alt="x" class="buttonfooter" href="https://x.com/alterhimez">X.com</a>
-            <a target="_blank" alt="youtube" class="buttonfooter" href="https://youtube.com/@alterhimez">Youtube.com</a>
-            <a target="_blank" alt="tiktok" class="buttonfooter" href="https://tiktok.com/@mralzheimerscp">TikTok.com</a>
-            <a target="_blank" alt="spotify" class="buttonfooter" href="https://open.spotify.com/user/315x4bkmoi3qk5i2awyg2kuiugry">Spotify.com</a>
-            <a target="_blank" alt="discord_serwer" class="buttonfooter" href="https://discord.com/invite/mBybxg5WdD">Discord: Alterowy</a>
-            <a target="_blank" alt="discord_profil" class="buttonfooter" href="https://discord.com/users/908458192667803669">Discord: Alterhimez</a>
-            <a target="_blank" alt="chess.com" class="buttonfooter" href="https://www.chess.com/member/alterhimez">Chess.com</a>
-            <a target="_blank" alt="lichess" class="buttonfooter" href="https://lichess.org/@/Mr_HowMuch">Lichess.org</a>
+            <a target="_blank" title="Github" alt="github" class="buttonfooter" href="https://github.com/alterhimez">Github.com</a>
+            <a target="_blank" title="Mail" alt="mail" class="buttonfooter" href="mailto:alterhimez07@gmail.com">Mail: alterhimez07@gmail.com</a>
+            <a target="_blank" title="Profil Steam" alt="steam" class="buttonfooter" href="https://s.team/p/grqd-cjrb">Profil Steam</a>
+            <a target="_blank" title="Grupa Steam: cvel_esports" alt="steam_group" class="buttonfooter" href="https://steamcommunity.com/groups/tzvel-esports">Grupa Steam: cvel_esports</a>
+            <a target="_blank" title="X.com" alt="x" class="buttonfooter" href="https://x.com/alterhimez">X.com</a>
+            <a target="_blank" title="Youtube" alt="youtube" class="buttonfooter" href="https://youtube.com/@alterhimez">Youtube.com</a>
+            <a target="_blank" title="TikTok" alt="tiktok" class="buttonfooter" href="https://tiktok.com/@mralzheimerscp">TikTok.com</a>
+            <a target="_blank" title="Spotify" alt="spotify" class="buttonfooter" href="https://open.spotify.com/user/315x4bkmoi3qk5i2awyg2kuiugry">Spotify.com</a>
+            <a target="_blank" title="Serwer discord" alt="discord_serwer" class="buttonfooter" href="https://discord.com/invite/mBybxg5WdD">Discord: Alterowy</a>
+            <a target="_blank" title="Discord: Alterhimez" alt="discord_profil" class="buttonfooter" href="https://discord.com/users/908458192667803669">Discord: Alterhimez</a>
+            <a target="_blank" title="Chess.com" alt="chess.com" class="buttonfooter" href="https://www.chess.com/member/alterhimez">Chess.com</a>
+            <a target="_blank" title="Lichess" alt="lichess" class="buttonfooter" href="https://lichess.org/@/Mr_HowMuch">Lichess.org</a>
             <br>
         </div>
-        <p class="pfooter">© 2025 by Alterhimez ~ all rights reserved</p>
+        <p class="pfooter" title="kopiowanie grozi mongolskim skrętem jąder">© 2025 by Alterhimez ~ all rights reserved</p>
     </footer>
     <br><br><br><br><br><br>
-    <script src="orientation-warning.js"></script>
-    <script src="typewriter.js"></script>
-    <script src="auto-music.js"></script>
-    <script src="autoalign.js"></script>
-    <script src="miernik_essy.js"></script>
+    <script src="2orientation-warning.js"></script>
+    <script src="2typewriter.js"></script>
+    <script src="2auto-music.js"></script>
+    <script src="2autoalign.js"></script>
+    <script src="2miernik_essy.js"></script>
 </body>
 </html>

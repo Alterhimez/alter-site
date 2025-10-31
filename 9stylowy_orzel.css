@@ -1,0 +1,383 @@
+.typewriter {
+    display: inline-block;
+    white-space: nowrap;
+    font-family: 'comic sans ms', sans-serif;
+    font-size: 35px;
+    color: white; /* text color while typing */
+}
+
+.typewriter .tw-text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.typewriter .tw-cursor {
+    display: inline-block;
+    width: .12em;
+    height: 1em;
+    background: blue; /* caret color */
+    margin-left: .08em;
+    vertical-align: middle;
+    animation: tw-blink 1s steps(1) infinite;
+}
+
+@keyframes tw-blink {
+    50% { opacity: 0; }
+}
+
+
+body{
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.container-top {
+    background: #fc3030;
+    padding: 50px;
+    margin-bottom: 0px;
+    text-align: center;
+    align-items: center;
+    color: white;
+    border-radius: 30px; /* Rounded rectangle */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.container-row {
+    display: flex;
+    gap: 0px;
+}
+
+.x1stcont2, .x2ndcont2, .x3rdcont2 {
+    background: #6d0052;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    color: white;
+    border-radius: 20px; /* Rounded rectangle */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    flex: 1;
+}
+
+
+
+.container-row2 {
+    display: flex;
+    gap: 0px;
+}
+
+.x1stcont, .x2ndcont, .x3rdcont {
+    background: #6f2cec;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    color: white;
+    border-radius: 20px; /* Rounded rectangle */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    flex: 1;
+}
+
+.x1stcont, .x3rdcont{
+    flex: 2;
+}
+
+
+/* 
+
+    POCZĄTEK AUDIO PLAYERA
+
+*/
+
+.buttonpp {
+    display: inline-block;
+    background: black;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin: 8px 8px 0 0;
+    border-radius: 16px;
+    font-size: 1.1em;
+    font-family: inherit;
+    font-weight: bold;
+    box-shadow: 0 2px 4px #1c0141a9;
+    transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.buttonpp:hover  {
+    transform: scale(0.96);
+    box-shadow: 0 2px 8px #520f45a9;
+    background: #592bc4;
+}
+
+.buttonpp:active{
+    transform: translateY(1px) scale(0.98);
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.12);
+    opacity: 0.98;
+}
+
+.audio-player { width: 100%; box-sizing: border-box; }
+.audio-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+
+.audio-controls .btn-row {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    max-width: 520px; /* group width */
+    box-sizing: border-box;
+    padding: 0 6px;
+}
+
+
+.audio-controls .btn-row .buttonpp,
+.audio-controls .btn-row button {
+    flex: 1 1 0;
+    min-width: 56px;
+    margin: 0;               /* remove site-wide button margins */
+    padding: 8px 10px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;            /* consistent height for alignment */
+    white-space: nowrap;
+}
+
+.audio-controls .btn-row .buttonpp:active,
+.audio-controls .btn-row button:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+.audio-controls .slider-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+.volume-control { width: 100%; max-width: 420px; display:flex; align-items:center; }
+.volume-control input[type="range"] {
+    width: 100%;
+    max-width: 380px;
+    appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+}
+
+/* Webkit track */
+.volume-control input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    background: #5d1586;
+    border-radius: 999px;
+}
+
+/* Webkit thumb */
+.volume-control input[type="range"]::-webkit-slider-thumb {
+    appearance: none;      /* replaced -webkit-appearance */
+    -moz-appearance: none; /* Firefox */
+    width: 16px;
+    height: 16px;
+    background: #4d1fb9; /* purple thumb */
+    border-radius: 10px; /* oval */
+    margin-top: -5px;
+    box-shadow: 0 2px 6px rgba(77,31,185,0.35);
+    cursor: pointer;
+}
+
+/* Firefox track/thumb */
+.volume-control input[type="range"]::-moz-range-track {
+    height: 6px;
+    background: #5d1586;
+    border-radius: 999px;
+}
+.volume-control input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #4d1fb9;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(77,31,185,0.35);
+    cursor: pointer;
+}
+
+/* current label (under slider) */
+#audio-current {
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: #fff;
+    text-align: center;
+}
+
+.audio-current,
+#audio-current {
+    width: 100%;
+    max-width: 640px;
+    text-align: center;
+    color: #fff;
+    font-size: 0.95rem;
+    margin-top: 4px;
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+/* small screens: reduce gaps and stack if needed */
+@media (max-width: 520px) {
+    .audio-controls .btn-row { gap: 6px; padding: 0 4px; }
+    .audio-controls .btn-row .buttonpp { min-width: 44px; height: 40px; font-size: 0.95rem; }
+    .volume-control input[type="range"] { max-width: 100%; }
+}
+
+/* 
+
+    KONIEC AUDIO PLAYERA
+
+*/
+
+footer{
+    text-align: center;
+    align-items: center;
+    font: 12px 'comic sans ms';
+    color: rgb(255, 255, 255);
+}
+
+.button1 {
+    display: inline-block;
+    background: blue;
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+    margin: 8px 8px 0 0;
+    border-radius: 16px;
+    font-size: 1.1em;
+    font-family: inherit;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(34,197,94,0.15);
+    transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.button1:hover  {
+    transform: scale(0.96);
+    box-shadow: 0 1px 4px rgba(2, 255, 94, 0.25);
+    background: #1374c4;
+}
+
+.button1:active{
+    transform: scale(0.8);
+}
+.tvoy-stary {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+#orientation-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;               /* toggled by script */
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.88);
+    z-index: 9999;
+    padding: 20px;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.orientation-message {
+    background: #0b0b0b;
+    color: #fff;
+    padding: 22px;
+    border-radius: 12px;
+    max-width: 640px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+.orientation-text {
+    margin: 0 0 14px;
+    font-size: 1.15rem;
+    line-height: 1.4;
+}
+
+/* reuse .button1 styling already in file; override small adjustments */
+.orientation-actions .button1 {
+    padding: 10px 18px;
+    border-radius: 10px;
+}
+hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 15px 0;
+}
+.abt-me-lst {
+    text-align: left;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+.buttonfooter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: blue;
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+    margin: 8px 8px 0 0;
+    border-radius: 16px;
+    font-size: 1.1em;
+    font-family: inherit;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(34,197,94,0.15);
+    transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
+    border: none;
+    cursor: pointer;
+    flex: 1 1 12%;
+}
+
+.buttonfooter:hover  {
+    transform: scale(0.96);
+    box-shadow: 0 1px 4px rgba(2, 255, 94, 0.25);
+    background: #1374c4;
+}
+
+.buttonfooter:active{
+    transform: scale(0.8);
+}
+
+.przyciski_stopki_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.pfooter {
+    font: 15px 'arial serif';
+}
+.q35px{
+    font-size: 35px;
+}
+iframe{
+    border-radius: 15px;
+}
