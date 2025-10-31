@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!audio) return;
 
     const playlist = [
-        'bg1.mp3','bg2.mp3','bg3.mp3','bg4.mp3','bg5.mp3',
-        'bg6.mp3','bg7.mp3','bg8.mp3','bg9.mp3','bg0.mp3'
+        '0bg1.mp3','0bg2.mp3','0bg3.mp3','0bg4.mp3','0bg5.mp3',
+        '0bg6.mp3','0bg7.mp3','0bg8.mp3','0bg9.mp3','0bg0.mp3'
     ];
 
     function shuffle(arr) {
@@ -137,16 +137,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // map filenames (without extension) to friendly labels
         const NAME_MAP = {
-            'bg0': 'Liryczna chłosta',
-            'bg1': 'Polish spinning toilet',
-            'bg2': 'Explosion',
-            'bg3': 'Po co wolność',
-            'bg4': 'Essa teresa',
-            'bg5': 'Not like Us',
-            'bg6': 'Trauma',
-            'bg7': 'The Fat Rat',
-            'bg8': 'Bad Apple',
-            'bg9': 'Mentore potwore, mentos momentos',
+            '0bg0': 'Liryczna chłosta',
+            '0bg1': 'Polish spinning toilet',
+            '0bg2': 'Explosion',
+            '0bg3': 'Po co wolność',
+            '0bg4': 'Essa teresa',
+            '0bg5': 'Not like Us',
+            '0bg6': 'Trauma',
+            '0bg7': 'The Fat Rat',
+            '0bg8': 'Bad Apple',
+            '0bg9': 'Mentore potwore, mentos momentos',
         };
 
         return NAME_MAP[name] || name;
