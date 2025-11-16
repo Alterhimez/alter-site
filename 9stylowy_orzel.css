@@ -1,14 +1,13 @@
-.typewriter {
-    display: inline-block;
-    white-space: nowrap;
-    font-family: 'comic sans ms', sans-serif;
-    font-size: 35px;
-    color: white; /* text color while typing */
+body{
+    text-decoration: none;
 }
 
 .typewriter .tw-text {
     display: inline-block;
     vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
 }
 
 .typewriter .tw-cursor {
@@ -500,6 +499,13 @@ hr {
 .q35px{
     font-size: 35px;
 }
+
+.smth-w-white{
+    color: white;
+    font-weight: bold;
+    font-family: comic sans ms, sans-serif;
+}
+
 .iframe-rounded{
     border-radius: 15px;
 }
