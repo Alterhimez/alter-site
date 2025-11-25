@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!audio) return;
 
     const playlist = [
-        '0bg1.mp3','0bg2.mp3','0bg3.mp3','0bg4.mp3','0bg5.mp3',
-        '0bg6.mp3','0bg7.mp3','0bg8.mp3','0bg9.mp3','0bg0.mp3'
+        'music/0bg1.mp3','music/0bg2.mp3','music/0bg3.mp3','music/0bg4.mp3','music/0bg5.mp3',
+        'music/0bg6.mp3','music/0bg7.mp3','music/0bg8.mp3','music/0bg9.mp3','music/0bg0.mp3'
     ];
 
     function shuffle(arr) {

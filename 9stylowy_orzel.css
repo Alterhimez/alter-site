@@ -482,7 +482,7 @@ hr {
     transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
     border: none;
     cursor: pointer;
-    flex: 1 1 12%;
+    flex: 1 1 14%;
 }
 
 .buttonfooter:hover  {
@@ -529,4 +529,5 @@ hr {
 .img-footer{
     height: 20px;
     margin-right: 4px;
+    border-radius: 4px;
 }
