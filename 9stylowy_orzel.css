@@ -72,7 +72,7 @@ body{
     gap: 0px;
 }
 
-.x1stcont, .x2ndcont, .x3rdcont {
+.x1stcont, .x2ndcont, .x3rdcont, .x2ndcont22 {
     background: #6f2cec;
     padding: 10px;
     margin: 5px;
@@ -80,7 +80,14 @@ body{
     color: white;
     border-radius: 20px; /* Rounded rectangle */
     box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.x1stcont, .x2ndcont, .x3rdcont{
     flex: 1;
+}
+
+.x2ndcont22 {
+    flex: 2;
 }
 
 .contact-label {
