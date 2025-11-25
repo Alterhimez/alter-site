@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const WEBHOOK_URL = 'https://discord.com/api/webhooks/1433662355585105941/bddGvPPn1upOvMFDbblqo-1Am4YjajmzICc-Ndifi8eLWZsBXEx94Eo0LyQDyZv2lwGW';
+    const meta = document.querySelector('meta[name="discord-webhook"]');
+    const WEBHOOK_URL = meta ? atob(meta.content.trim()) : '';
 
     const messages = {
         click_me: "someone clicked 'nothin''",

